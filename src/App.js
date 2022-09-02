@@ -12,7 +12,7 @@ import './App.css';
 
 
 const app = new Clarifai.App({
- apiKey: '929f5ac398e54d77b7e146ced7bce0e0'
+ apiKey: 'MYKEY'
 });
 
 const particlesParams = {
@@ -179,7 +179,6 @@ class App extends Component {
         options={particlesParams}
         />
         <Navigation  isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-    }
 {/*        we use {} for js expressions inside return*/}
         { route === 'home' 
           ? <div>
