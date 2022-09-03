@@ -83,24 +83,25 @@ const particlesParams = {
     detectRetina: false,
 }
 
+const InitialState = {
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = InitialState;
   }
 
   loadUser = (data) => {
@@ -156,6 +157,7 @@ class App extends Component {
               // Object.assign allow us not modify existing params. 
               this.setState(Object.assign(this.state.user, { entries: count}))
             })
+            .catch(console.log)
         }
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
@@ -164,7 +166,7 @@ class App extends Component {
 
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState({isSignedIn: false})
+      this.setState(InitialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
